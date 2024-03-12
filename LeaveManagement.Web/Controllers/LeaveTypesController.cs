@@ -64,7 +64,8 @@ namespace LeaveManagement.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(leaveTypeVM);
+                var leaveType = mapper.Map<LeaveType>(leaveTypeVM);
+                _context.Add(leaveType);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
